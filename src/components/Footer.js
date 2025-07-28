@@ -16,8 +16,8 @@ const Footer = () => {
                                 <h3 className="font-bold text-4xl text-[#013289] mb-4">ElevateHub</h3>
                                 <div className='text-md font-medium text-[#0e20e3]'>
                                     <h5>Civil Lines</h5>
-                                    <p>Prayagraj</p>
-                                    <p>Uttar Pradesh</p>
+                                    <p>Satna</p>
+                                    <p>Madhya Pradesh</p>
                                     <p>India</p>
                                 </div>
                             </div>

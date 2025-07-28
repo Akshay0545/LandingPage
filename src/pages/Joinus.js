@@ -220,7 +220,7 @@ const JoinUs = (props) => {
                                 </div>
                                 <div className="flex flex-col">
                                     <h2 className="text-2xl">Office Address</h2>
-                                    <p className="text-gray-400">Prayagraj,Uttar Pradesh</p>
+                                    <p className="text-gray-400">Satna, Madhya Pradesh</p>
                                 </div>
                             </div>
 
@@ -231,11 +231,11 @@ const JoinUs = (props) => {
 
                                 <div className="flex flex-col">
                                     <h2 className="text-2xl">Call Us</h2>
-                                    <p className="text-gray-400">Mobile: +917234032401</p>
+                                    <p className="text-gray-400">Mobile: +917879567374</p>
 
                                     <div className='mt-5'>
                                         <h2 className="text-2xl">Send an E-mail</h2>
-                                        <p className="text-gray-400">aditya.singh0096@gmail.com</p>
+                                        <p className="text-gray-400">akshaykashyap7879@gmail.com</p>
                                     </div>
 
                                 </div>
