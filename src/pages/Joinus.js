@@ -58,7 +58,7 @@ const JoinUs = (props) => {
 
         axios({
             method: "post",
-            url: 'https://formspree.io/f/xpwazrqq',
+            url: 'https://formspree.io/f/xvgqrwpd',
             data: fData,
             headers: {
                 'Content-Type': 'multipart/form-data'

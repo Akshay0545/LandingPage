@@ -26,54 +26,64 @@ const Contact = () => {
         setMessage('')
     }
 
-    const sendEmail = (e) => {
-        e.preventDefault();
-        document.getElementById('submitBtn').disabled = true;
-        document.getElementById('submitBtn').innerHTML = 'Loading...';
-        let fData = new FormData();
-        fData.append('first_name', firstName)
-        fData.append('last_name', lastName)
-        fData.append('email', email)
-        fData.append('phone_number', phone)
-        fData.append('message', message)
+   const sendEmail = (e) => {
+    e.preventDefault();
+    document.getElementById('submitBtn').disabled = true;
+    document.getElementById('submitBtn').innerHTML = 'Loading...';
+    let fData = new FormData();
+    fData.append('first_name', firstName);
+    fData.append('last_name', lastName);
+    fData.append('email', email);
+    fData.append('phone_number', phone);
+    fData.append('message', message);
 
-        axios({
-            method: "post",
-            url:'https://formspree.io/f/xpwazrqq',
-            data: fData,
-            headers: {
-                'Content-Type':  'multipart/form-data'
-            }
-        })
-        .then(function (response) {
-            document.getElementById('submitBtn').disabled = false;
-            document.getElementById('submitBtn').innerHTML = 'send message';
-            clearInput()
-            //handle success
-            Notiflix.Report.success(
-                'Success',
-                response.data.message,
-                'Okay',
-            );
-        })
-        .catch(function (error) {
-            document.getElementById('submitBtn').disabled = false;
-            document.getElementById('submitBtn').innerHTML = 'send message';
-            //handle error
-            const { response } = error;
-            if(response.status === 500) {
+    axios({
+        method: "post",
+        url: 'https://formspree.io/f/xvgqrwpd',  // Replace with your actual Formspree URL
+        data: fData,
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    })
+    .then(function (response) {
+        document.getElementById('submitBtn').disabled = false;
+        document.getElementById('submitBtn').innerHTML = 'send message';
+        clearInput();
+        Notiflix.Report.success(
+            'Success',
+            'Your message has been sent!',
+            'Okay',
+        );
+    })
+    .catch(function (error) {
+        document.getElementById('submitBtn').disabled = false;
+        document.getElementById('submitBtn').innerHTML = 'send message';
+        
+        // Safely check if response exists
+        const response = error.response;
+        if (response) {
+            if (response.status === 500) {
                 Notiflix.Report.failure(
                     'An error occurred',
-                    response.data.message,
+                    response.data.message || 'Server error—please try again.',
                     'Okay',
                 );
             }
-            if(response.data.errors !== null) {
-                setErrors(response.data.errors)
+            if (response.data?.errors) {
+                setErrors(response.data.errors);
             }
-            
-        });
-    }
+        } else {
+            // Handle cases with no response (e.g., network error)
+            Notiflix.Report.failure(
+                'Connection Error',
+                'Unable to reach the server. Check your internet or try again later.',
+                'Okay',
+            );
+        }
+        console.error('Form submission error:', error);  // For debugging
+    });
+};
+
     return (
         <>
             <div>
